@@ -34,6 +34,8 @@ public class BeerDetailsActivity extends AppCompatActivity implements View.OnCli
     private BeersApiService service;
     private Beer beer;
 
+
+    // TODO: 07.02.2018. CREATE MVP FOR DETAILS
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +53,6 @@ public class BeerDetailsActivity extends AppCompatActivity implements View.OnCli
                 Picasso.with(this)
                         .load(beer.getLabels().getLarge())
                         .resize(Constants.PICTURE_WIDTH, Constants.PICTURE_HEIGHT)
-                        .centerCrop()
                         .into(image);
             }
             style.setText(beer.getStyle().getName());
