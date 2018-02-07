@@ -21,7 +21,6 @@ import java.util.List;
 
 public class BeerActivity extends AppCompatActivity implements BeerListener, BeerView {
 
-    int styleId = -1; //todo prebaci u presenter
     private BeerAdapter adapter = new BeerAdapter();
 
     private BeerPresenter presenter;
@@ -30,7 +29,6 @@ public class BeerActivity extends AppCompatActivity implements BeerListener, Bee
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beer);
-        //nekad to izvlacimo u metodu
         presenter = new BeerPresenterImpl(BackendFactory.getBeerInteractor());
         presenter.setView(this);
         getStyleId();
@@ -40,7 +38,6 @@ public class BeerActivity extends AppCompatActivity implements BeerListener, Bee
     }
 
     private void loadBeers() {
-        // TODO: 06.02.2018. prebaci u presenter
         presenter.getBeersByStyle();
     }
 
