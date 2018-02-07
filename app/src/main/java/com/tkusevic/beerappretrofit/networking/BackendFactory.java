@@ -2,6 +2,8 @@ package com.tkusevic.beerappretrofit.networking;
 
 import com.tkusevic.beerappretrofit.interaction.BeerInteractor;
 import com.tkusevic.beerappretrofit.interaction.BeerInteractorImpl;
+import com.tkusevic.beerappretrofit.interaction.StyleInteractor;
+import com.tkusevic.beerappretrofit.interaction.StyleInteractorImpl;
 
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -44,5 +46,9 @@ public class BackendFactory {
 
     public static BeerInteractor getBeerInteractor() {
         return new BeerInteractorImpl(getService());
+    }
+
+    public static StyleInteractor getStyleInteractor(){
+        return new StyleInteractorImpl(getService());
     }
 }

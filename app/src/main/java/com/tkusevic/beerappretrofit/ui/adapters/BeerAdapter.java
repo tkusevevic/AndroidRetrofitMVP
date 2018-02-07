@@ -38,7 +38,6 @@ public class BeerAdapter extends RecyclerView.Adapter<BeerViewHolder> {
     }
 
     public void addBeers(List<Beer> beers) {
-        Log.d("loggg","CALL!");
         if (beers != null) {
             int start = this.beers.size();
             this.beers.addAll(beers);

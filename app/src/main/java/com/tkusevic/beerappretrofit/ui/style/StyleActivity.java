@@ -15,11 +15,15 @@ import com.tkusevic.beerappretrofit.data.response.CategoriesResponse;
 import com.tkusevic.beerappretrofit.data.response.StyleResponse;
 import com.tkusevic.beerappretrofit.networking.BackendFactory;
 import com.tkusevic.beerappretrofit.networking.BeersApiService;
+import com.tkusevic.beerappretrofit.presentation.StylePresenter;
+import com.tkusevic.beerappretrofit.presentation.StylePresenterImpl;
 import com.tkusevic.beerappretrofit.ui.adapters.CategoryAdapter;
 import com.tkusevic.beerappretrofit.ui.adapters.StyleAdapter;
 import com.tkusevic.beerappretrofit.ui.beer.BeerActivity;
 import com.tkusevic.beerappretrofit.ui.listener.EndlessScrollListener;
 import com.tkusevic.beerappretrofit.ui.listener.StyleListener;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,29 +33,30 @@ import retrofit2.Response;
  * Created by tkusevic on 05.02.2018..
  */
 
-public class StyleActivity extends AppCompatActivity implements StyleListener{
+public class StyleActivity extends AppCompatActivity implements StyleListener, StyleView{
 
-    int categoryId=-1;
     private static final String API_KEY = "5f56eec4b4406fa4c371e708dbf96f06";
     private StyleAdapter adapter = new StyleAdapter();
-    private BeersApiService service;
+
+    private StylePresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_style);
-        service = BackendFactory.getService();
-        getCategoryId();
+        initPresenter();
         initAdapter();
         initList();
-        loadAnswers();
+        loadStyles();
     }
 
-    private void getCategoryId() {
-        Bundle extras = getIntent().getExtras();
-        if(extras!=null){
-            categoryId = extras.getInt("categoryId");
-        }
+    private void loadStyles() {
+        presenter.getStyles();
+    }
+
+    private void initPresenter() {
+        presenter = new StylePresenterImpl(BackendFactory.getStyleInteractor());
+        presenter.setBaseView(this);
     }
 
     private void initList() {
@@ -66,29 +71,16 @@ public class StyleActivity extends AppCompatActivity implements StyleListener{
         adapter.setOnStyleClickListener(this);
     }
 
-    private void loadAnswers() {
-        service.getStyles(API_KEY).enqueue(new Callback<StyleResponse>() {
-            @Override
-            public void onResponse(Call<StyleResponse> call, Response<StyleResponse> response) {
-                if (response.isSuccessful()) {
-                    adapter.setStyles(response.body().getStyles());
-                    Log.d("MainActivity", "Styles loaded!");
-                } else {
-                    int statusCode = response.code();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<StyleResponse> call, Throwable t) {
-                Log.d("MainActivity", "Styles loading failed!");
-            }
-        });
-    }
 
     @Override
     public void onStyleClick(Style style) {
         Intent intent = new Intent(this, BeerActivity.class);
         intent.putExtra("styleId",style.getId());
         startActivity(intent);
+    }
+
+    @Override
+    public void setStyles(List<Style> styles) {
+        adapter.setStyles(styles);
     }
 }

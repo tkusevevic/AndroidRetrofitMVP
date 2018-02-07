@@ -6,5 +6,7 @@ package com.tkusevic.beerappretrofit.base;
 
 public interface BasePresenter<T extends BaseView> {
 
-    void setView(T view);
+    void setBaseView(T styleView);
+
+
 }

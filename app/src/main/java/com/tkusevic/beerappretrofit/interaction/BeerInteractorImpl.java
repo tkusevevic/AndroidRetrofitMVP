@@ -28,5 +28,4 @@ public class BeerInteractorImpl implements BeerInteractor {
     public void loadNextPage(int styleId,int page, Callback<BeersResponse> beersResponseCallback) {
         apiService.getBeerByPage(styleId,page,API_KEY).enqueue(beersResponseCallback);
     }
-
 }

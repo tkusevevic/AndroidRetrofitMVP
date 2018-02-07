@@ -29,8 +29,8 @@ public class BeerPresenterImpl implements BeerPresenter {
     }
 
     @Override
-    public void setView(BeerView view) {
-        this.beerView = view;
+    public void setBaseView(BeerView beerView) {
+        this.beerView = beerView;
     }
 
     @Override

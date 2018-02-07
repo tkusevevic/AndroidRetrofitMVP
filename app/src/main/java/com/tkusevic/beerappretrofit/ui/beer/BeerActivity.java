@@ -30,7 +30,7 @@ public class BeerActivity extends AppCompatActivity implements BeerListener, Bee
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beer);
         presenter = new BeerPresenterImpl(BackendFactory.getBeerInteractor());
-        presenter.setView(this);
+        presenter.setBaseView(this);
         getStyleId();
         initAdapter();
         initList();
