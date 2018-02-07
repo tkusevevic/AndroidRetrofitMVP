@@ -30,7 +30,7 @@ public class BeerDetailsActivity extends AppCompatActivity implements View.OnCli
     private ImageView image;
     private TextView style;
     private TextView description;
-    private String beerId = "oeGSxs";
+    private String beerId ;
     private BeersApiService service;
     private Beer beer;
 
