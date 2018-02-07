@@ -20,8 +20,8 @@ public interface BeersApiService {
     Call<StyleResponse> getStyles(
             @Query("key") String ApiKey
     );
-    //beers
 
+    //beers
     @GET("beer/{id}/")
     Call<BeerResponse> getBeerById(@Path("id") String id, @Query("key") String apiKey);
 

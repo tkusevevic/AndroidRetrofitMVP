@@ -2,4 +2,7 @@
     <string name="app_name">BeerAppRetrofit</string>
     <string name="beers">Beers</string>
     <string name="types">Type</string>
+    <string name="beerDetails">Beer details</string>
+    <string name="no_data_found">No data found!</string>
+    <string name="something_went_wrong">Something went wrong!</string>
 </resources>

@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.tkusevic.beerappretrofit.R;
+import com.tkusevic.beerappretrofit.commons.Constants;
 import com.tkusevic.beerappretrofit.data.model.Style;
 import com.tkusevic.beerappretrofit.networking.BackendFactory;
 import com.tkusevic.beerappretrofit.presentation.StylePresenter;
@@ -61,7 +62,7 @@ public class StyleActivity extends AppCompatActivity implements StyleListener, S
     @Override
     public void onStyleClick(Style style) {
         Intent intent = new Intent(this, BeerActivity.class);
-        intent.putExtra("styleId", style.getId());
+        intent.putExtra(Constants.STYLE_ID, style.getId());
         startActivity(intent);
     }
 

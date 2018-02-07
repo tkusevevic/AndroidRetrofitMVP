@@ -1,5 +1,6 @@
 package com.tkusevic.beerappretrofit.presentation;
 
+import com.tkusevic.beerappretrofit.commons.Constants;
 import com.tkusevic.beerappretrofit.data.response.StyleResponse;
 import com.tkusevic.beerappretrofit.interaction.StyleInteractor;
 import com.tkusevic.beerappretrofit.ui.style.StyleView;
@@ -36,7 +37,12 @@ public class StylePresenterImpl implements StylePresenter {
         return new Callback<StyleResponse>() {
             @Override
             public void onResponse(Call<StyleResponse> call, Response<StyleResponse> response) {
-                styleView.setStyles(response.body().getStyles());
+                if (response.isSuccessful()) {
+                    if (response.code() == Constants.RESPONSE_OK) {
+
+                        styleView.setStyles(response.body().getStyles());
+                    }
+                }
             }
 
             @Override
