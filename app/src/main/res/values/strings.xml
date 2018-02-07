@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">BeerAppRetrofit</string>
+    <string name="beers">Beers</string>
+    <string name="types">Type</string>
+</resources>

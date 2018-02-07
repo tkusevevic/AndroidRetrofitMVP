@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/image_details"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:padding="5dp"
+            android:layout_centerHorizontal="true"
+            tools:src="@drawable/no_picture" />
+
+        <TextView
+            android:id="@+id/style_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/image_details"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:textSize="22sp"
+            tools:text="Ovo je neki style" />
+
+        <TextView
+            android:id="@+id/description_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/style_details"
+            android:layout_margin="20dp"
+            android:textSize="19sp"
+            tools:text="Ovaako ce izgledati neki descritpion koji zapravo neamo pojma da postoji" />
+    </RelativeLayout>
+</ScrollView>
