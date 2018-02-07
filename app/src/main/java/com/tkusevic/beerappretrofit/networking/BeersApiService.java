@@ -2,7 +2,6 @@ package com.tkusevic.beerappretrofit.networking;
 
 import com.tkusevic.beerappretrofit.data.response.BeersResponse;
 import com.tkusevic.beerappretrofit.data.response.BeerResponse;
-import com.tkusevic.beerappretrofit.data.response.CategoriesResponse;
 import com.tkusevic.beerappretrofit.data.response.StyleResponse;
 
 import retrofit2.Call;
@@ -15,9 +14,6 @@ import retrofit2.http.Query;
  */
 
 public interface BeersApiService {
-    //categories
-    @GET("categories/")
-    Call<CategoriesResponse> getCategories(@Query("key") String apiKey);
 
     //styles
     @GET("styles/")

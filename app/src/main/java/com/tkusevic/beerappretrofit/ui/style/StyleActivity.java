@@ -5,29 +5,17 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.View;
-import android.widget.Toast;
 
 import com.tkusevic.beerappretrofit.R;
 import com.tkusevic.beerappretrofit.data.model.Style;
-import com.tkusevic.beerappretrofit.data.response.CategoriesResponse;
-import com.tkusevic.beerappretrofit.data.response.StyleResponse;
 import com.tkusevic.beerappretrofit.networking.BackendFactory;
-import com.tkusevic.beerappretrofit.networking.BeersApiService;
 import com.tkusevic.beerappretrofit.presentation.StylePresenter;
 import com.tkusevic.beerappretrofit.presentation.StylePresenterImpl;
-import com.tkusevic.beerappretrofit.ui.adapters.CategoryAdapter;
 import com.tkusevic.beerappretrofit.ui.adapters.StyleAdapter;
 import com.tkusevic.beerappretrofit.ui.beer.BeerActivity;
-import com.tkusevic.beerappretrofit.ui.listener.EndlessScrollListener;
 import com.tkusevic.beerappretrofit.ui.listener.StyleListener;
 
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * Created by tkusevic on 05.02.2018..

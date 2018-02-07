@@ -1,7 +1,6 @@
 package com.tkusevic.beerappretrofit.data.response;
 
 import com.google.gson.annotations.SerializedName;
-import com.tkusevic.beerappretrofit.data.model.Category;
 import com.tkusevic.beerappretrofit.data.model.Style;
 
 import java.util.List;

@@ -1,16 +1,13 @@
 package com.tkusevic.beerappretrofit.ui.adapters;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.tkusevic.beerappretrofit.R;
 import com.tkusevic.beerappretrofit.data.model.Beer;
-import com.tkusevic.beerappretrofit.data.model.Category;
 import com.tkusevic.beerappretrofit.ui.holders.BeerViewHolder;
-import com.tkusevic.beerappretrofit.ui.holders.CategoryViewHolder;
 import com.tkusevic.beerappretrofit.ui.listener.BeerListener;
 
 import java.util.ArrayList;
