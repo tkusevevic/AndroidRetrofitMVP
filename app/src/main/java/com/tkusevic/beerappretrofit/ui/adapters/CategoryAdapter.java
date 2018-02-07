@@ -22,19 +22,19 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryViewHolder> {
     private List<Category> categories = new ArrayList<>();
     private CategoryListener listener;
 
-    public void setOnCategoryClickListener(CategoryListener listener){
+    public void setOnCategoryClickListener(CategoryListener listener) {
         this.listener = listener;
     }
 
-    public void setCategories(List<Category> categories){
+    public void setCategories(List<Category> categories) {
         this.categories.clear();
         this.categories.addAll(categories);
         notifyDataSetChanged();
     }
 
-    public void removeCategory(Category category){
+    public void removeCategory(Category category) {
         int position = categories.indexOf(category);
-        if(position != -1){
+        if (position != -1) {
             categories.remove(category);
             notifyItemChanged(position);
         }
@@ -42,7 +42,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryViewHolder> {
 
     @Override
     public CategoryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.category_holder,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.category_holder, parent, false);
         return new CategoryViewHolder(view);
     }
 

@@ -78,9 +78,9 @@ public class BeerActivity extends AppCompatActivity implements BeerListener, Bee
 
     @Override
     public void startDetails(Beer beer) {
-            Intent intent = new Intent(this, BeerDetailsActivity.class);
-            intent.putExtra("beerId", beer.getId());
-            startActivity(intent);
+        Intent intent = new Intent(this, BeerDetailsActivity.class);
+        intent.putExtra("beerId", beer.getId());
+        startActivity(intent);
     }
 
     @Override

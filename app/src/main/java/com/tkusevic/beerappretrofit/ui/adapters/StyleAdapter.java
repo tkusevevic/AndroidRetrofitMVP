@@ -17,16 +17,16 @@ import java.util.List;
  * Created by tkusevic on 05.02.2018..
  */
 
-public class StyleAdapter  extends RecyclerView.Adapter<StyleViewHolder>{
+public class StyleAdapter extends RecyclerView.Adapter<StyleViewHolder> {
 
     private List<Style> styles = new ArrayList<>();
     private StyleListener listener;
 
-    public void setOnStyleClickListener(StyleListener listener){
+    public void setOnStyleClickListener(StyleListener listener) {
         this.listener = listener;
     }
 
-    public void setStyles(List<Style> styles){
+    public void setStyles(List<Style> styles) {
         this.styles.clear();
         this.styles.addAll(styles);
         notifyDataSetChanged();
@@ -34,7 +34,7 @@ public class StyleAdapter  extends RecyclerView.Adapter<StyleViewHolder>{
 
     @Override
     public StyleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.style_holder,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.style_holder, parent, false);
         return new StyleViewHolder(view);
     }
 

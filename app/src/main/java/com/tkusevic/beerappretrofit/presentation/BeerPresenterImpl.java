@@ -15,13 +15,10 @@ import retrofit2.Response;
 
 public class BeerPresenterImpl implements BeerPresenter {
 
-    //tu idu dependenciji
     private final BeerInteractor interactor;
 
-    //ide view
     private BeerView beerView;
 
-    //idu podaci
     private int styleId;
 
     public BeerPresenterImpl(BeerInteractor interactor) {
@@ -29,8 +26,8 @@ public class BeerPresenterImpl implements BeerPresenter {
     }
 
     @Override
-    public void setBaseView(BeerView beerView) {
-        this.beerView = beerView;
+    public void setBaseView(BeerView baseView) {
+        this.beerView = baseView;
     }
 
     @Override
@@ -45,13 +42,13 @@ public class BeerPresenterImpl implements BeerPresenter {
 
     @Override
     public void onBeerClicked(Beer beer) {
-        if(beer!=null)
-        beerView.startDetails(beer);
+        if (beer != null)
+            beerView.startDetails(beer);
     }
 
     @Override
     public void loadNextPage(int page) {
-        interactor.loadNextPage(styleId,page,addBeersCallback());
+        interactor.loadNextPage(styleId, page, addBeersCallback());
     }
 
     private Callback<BeersResponse> getBeersCallback() {
@@ -59,7 +56,7 @@ public class BeerPresenterImpl implements BeerPresenter {
 
             @Override
             public void onResponse(Call<BeersResponse> call, Response<BeersResponse> response) {
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
                     beerView.setBeers(response.body().getBeers());
                 }
             }
@@ -71,11 +68,11 @@ public class BeerPresenterImpl implements BeerPresenter {
         };
     }
 
-    private Callback<BeersResponse> addBeersCallback(){
+    private Callback<BeersResponse> addBeersCallback() {
         return new Callback<BeersResponse>() {
             @Override
             public void onResponse(Call<BeersResponse> call, Response<BeersResponse> response) {
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
                     beerView.addBeers(response.body().getBeers());
                 }
             }

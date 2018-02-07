@@ -12,5 +12,5 @@ public interface BeerInteractor {
 
     void getBeersByStyle(int styleId, Callback<BeersResponse> beersCallback);
 
-    void loadNextPage(int styleId,int page, Callback<BeersResponse> beersResponseCallback);
+    void loadNextPage(int styleId, int page, Callback<BeersResponse> beersResponseCallback);
 }

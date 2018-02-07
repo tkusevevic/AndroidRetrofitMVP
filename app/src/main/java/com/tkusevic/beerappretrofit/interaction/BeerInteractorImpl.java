@@ -25,7 +25,7 @@ public class BeerInteractorImpl implements BeerInteractor {
     }
 
     @Override
-    public void loadNextPage(int styleId,int page, Callback<BeersResponse> beersResponseCallback) {
-        apiService.getBeerByPage(styleId,page,API_KEY).enqueue(beersResponseCallback);
+    public void loadNextPage(int styleId, int page, Callback<BeersResponse> beersResponseCallback) {
+        apiService.getBeerByPage(styleId, page, API_KEY).enqueue(beersResponseCallback);
     }
 }

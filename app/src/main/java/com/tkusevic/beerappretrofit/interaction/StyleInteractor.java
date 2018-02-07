@@ -11,6 +11,5 @@ import retrofit2.Callback;
 
 public interface StyleInteractor {
 
-
     void getStyles(Callback<StyleResponse> stylesCallBack);
 }

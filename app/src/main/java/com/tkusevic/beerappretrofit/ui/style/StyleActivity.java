@@ -33,9 +33,8 @@ import retrofit2.Response;
  * Created by tkusevic on 05.02.2018..
  */
 
-public class StyleActivity extends AppCompatActivity implements StyleListener, StyleView{
+public class StyleActivity extends AppCompatActivity implements StyleListener, StyleView {
 
-    private static final String API_KEY = "5f56eec4b4406fa4c371e708dbf96f06";
     private StyleAdapter adapter = new StyleAdapter();
 
     private StylePresenter presenter;
@@ -64,7 +63,6 @@ public class StyleActivity extends AppCompatActivity implements StyleListener, S
         recyclerView.setAdapter(adapter);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
-
     }
 
     private void initAdapter() {
@@ -75,7 +73,7 @@ public class StyleActivity extends AppCompatActivity implements StyleListener, S
     @Override
     public void onStyleClick(Style style) {
         Intent intent = new Intent(this, BeerActivity.class);
-        intent.putExtra("styleId",style.getId());
+        intent.putExtra("styleId", style.getId());
         startActivity(intent);
     }
 

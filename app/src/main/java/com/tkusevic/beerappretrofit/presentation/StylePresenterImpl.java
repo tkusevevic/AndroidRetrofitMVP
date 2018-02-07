@@ -19,21 +19,20 @@ public class StylePresenterImpl implements StylePresenter {
     private StyleView styleView;
 
     @Override
-    public void setBaseView(StyleView styleView) {
-        this.styleView = styleView;
-    }
-    
-    public StylePresenterImpl(StyleInteractor interactor){
-        this.interactor = interactor;
+    public void setBaseView(StyleView baseView) {
+        this.styleView = baseView;
     }
 
+    public StylePresenterImpl(StyleInteractor interactor) {
+        this.interactor = interactor;
+    }
 
     @Override
     public void getStyles() {
         interactor.getStyles(getStylesCallBack());
     }
 
-     private Callback<StyleResponse> getStylesCallBack(){
+    private Callback<StyleResponse> getStylesCallBack() {
         return new Callback<StyleResponse>() {
             @Override
             public void onResponse(Call<StyleResponse> call, Response<StyleResponse> response) {
@@ -45,6 +44,5 @@ public class StylePresenterImpl implements StylePresenter {
 
             }
         };
-     }
-
+    }
 }

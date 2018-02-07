@@ -5,12 +5,14 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.squareup.picasso.Picasso;
 import com.tkusevic.beerappretrofit.R;
 import com.tkusevic.beerappretrofit.data.model.Beer;
 import com.tkusevic.beerappretrofit.data.response.BeerResponse;
 import com.tkusevic.beerappretrofit.networking.BackendFactory;
 import com.tkusevic.beerappretrofit.networking.BeersApiService;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -67,7 +69,7 @@ public class BeerDetailsActivity extends AppCompatActivity {
                     showData();
                 } else {
                     int statusCode = response.code();
-                }
+            }
             }
 
             @Override

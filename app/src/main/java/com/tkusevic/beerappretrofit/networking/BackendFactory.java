@@ -48,7 +48,7 @@ public class BackendFactory {
         return new BeerInteractorImpl(getService());
     }
 
-    public static StyleInteractor getStyleInteractor(){
+    public static StyleInteractor getStyleInteractor() {
         return new StyleInteractorImpl(getService());
     }
 }

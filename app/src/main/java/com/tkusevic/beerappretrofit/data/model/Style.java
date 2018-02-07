@@ -55,7 +55,6 @@ public class Style {
         this.description = description;
     }
 
-
     public String getCreateDate() {
         return createDate;
     }
@@ -71,7 +70,6 @@ public class Style {
     public void setUpdateDate(String updateDate) {
         this.updateDate = updateDate;
     }
-
 
     public String getName() {
         return name;

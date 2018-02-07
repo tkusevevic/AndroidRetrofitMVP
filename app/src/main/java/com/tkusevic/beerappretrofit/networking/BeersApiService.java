@@ -30,7 +30,7 @@ public interface BeersApiService {
     Call<BeerResponse> getBeerById(@Path("id") String id, @Query("key") String apiKey);
 
     @GET("beers/")
-    Call<BeersResponse> getBeerByPage(@Query("styleId") int styleId,@Query("p") int p, @Query("key") String apiKey);
+    Call<BeersResponse> getBeerByPage(@Query("styleId") int styleId, @Query("p") int p, @Query("key") String apiKey);
 
     @GET("beers/")
     Call<BeersResponse> getBeersByStyle(

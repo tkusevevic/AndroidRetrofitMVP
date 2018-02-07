@@ -70,7 +70,7 @@ public class CategoryActivity extends AppCompatActivity implements CategoryListe
     @Override
     public void onCategoryClick(Category category) {
         Intent intent = new Intent(this, StyleActivity.class);
-        intent.putExtra("categoryId",category.getId());
+        intent.putExtra("categoryId", category.getId());
         startActivity(intent);
     }
 }

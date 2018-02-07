@@ -16,5 +16,5 @@ public interface BeerPresenter extends BasePresenter<BeerView> {
 
     void onBeerClicked(Beer beer);
 
-    void loadNextPage( int page);
+    void loadNextPage(int page);
 }

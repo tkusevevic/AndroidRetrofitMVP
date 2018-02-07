@@ -10,8 +10,7 @@ import retrofit2.Callback;
  * Created by tkusevic on 07.02.2018..
  */
 
-public class StyleInteractorImpl implements StyleInteractor{
-
+public class StyleInteractorImpl implements StyleInteractor {
 
     private final BeersApiService apiService;
 
@@ -20,7 +19,6 @@ public class StyleInteractorImpl implements StyleInteractor{
     public StyleInteractorImpl(BeersApiService apiService) {
         this.apiService = apiService;
     }
-
 
     @Override
     public void getStyles(Callback<StyleResponse> styleCallback) {
