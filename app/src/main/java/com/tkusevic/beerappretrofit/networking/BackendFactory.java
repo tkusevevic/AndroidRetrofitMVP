@@ -42,7 +42,7 @@ public class BackendFactory {
         return retrofit;
     }
 
-    public static BeersApiService getService() {
+    private static BeersApiService getService() {
         return getClient(BASE_URL).create(BeersApiService.class);
     }
 
