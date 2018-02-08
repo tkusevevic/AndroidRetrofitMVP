@@ -8,7 +8,8 @@ import java.util.List;
  * Created by tkusevic on 06.02.2018..
  */
 
-public interface BeerView {
+public interface BeerView
+{
 
     void setBeers(List<Beer> beers);
 

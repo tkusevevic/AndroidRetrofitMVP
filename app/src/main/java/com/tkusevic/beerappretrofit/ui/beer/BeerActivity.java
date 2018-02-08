@@ -1,14 +1,12 @@
 package com.tkusevic.beerappretrofit.ui.beer;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 
 import com.tkusevic.beerappretrofit.R;
@@ -24,7 +22,7 @@ import com.tkusevic.beerappretrofit.ui.listener.EndlessScrollListener;
 import java.util.List;
 
 
-public class BeerActivity extends AppCompatActivity implements BeerListener, BeerView , View.OnClickListener{
+public class BeerActivity extends AppCompatActivity implements BeerListener, BeerView, View.OnClickListener{
 
     private BeerAdapter adapter = new BeerAdapter();
 
@@ -50,15 +48,15 @@ public class BeerActivity extends AppCompatActivity implements BeerListener, Bee
         back.setOnClickListener(this);
     }
 
-    private void loadBeers() {
-        presenter.getBeersByStyle();
-    }
-
     private void getStyleId() {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             presenter.setStyleId(extras.getInt(Constants.STYLE_ID));
         }
+    }
+
+    private void initAdapter() {
+        adapter.setOnBeerClickListener(this);
     }
 
     private void initList() {
@@ -75,8 +73,8 @@ public class BeerActivity extends AppCompatActivity implements BeerListener, Bee
         recyclerView.addOnScrollListener(scrollListener);
     }
 
-    private void initAdapter() {
-        adapter.setOnBeerClickListener(this);
+    private void loadBeers() {
+        presenter.getBeersByStyle();
     }
 
     @Override

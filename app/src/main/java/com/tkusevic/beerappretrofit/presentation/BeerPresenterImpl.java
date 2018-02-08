@@ -1,12 +1,9 @@
 package com.tkusevic.beerappretrofit.presentation;
 
-import android.widget.Toast;
-
 import com.tkusevic.beerappretrofit.commons.Constants;
 import com.tkusevic.beerappretrofit.data.model.Beer;
 import com.tkusevic.beerappretrofit.data.response.BeersResponse;
 import com.tkusevic.beerappretrofit.interaction.BeerInteractor;
-import com.tkusevic.beerappretrofit.ui.beer.BeerDetailsActivity;
 import com.tkusevic.beerappretrofit.ui.beer.BeerView;
 
 import retrofit2.Call;

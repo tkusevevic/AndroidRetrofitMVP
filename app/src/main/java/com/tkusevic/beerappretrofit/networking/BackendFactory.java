@@ -1,5 +1,7 @@
 package com.tkusevic.beerappretrofit.networking;
 
+import com.tkusevic.beerappretrofit.interaction.BeerDetailsInteractor;
+import com.tkusevic.beerappretrofit.interaction.BeerDetailsInteractorImpl;
 import com.tkusevic.beerappretrofit.interaction.BeerInteractor;
 import com.tkusevic.beerappretrofit.interaction.BeerInteractorImpl;
 import com.tkusevic.beerappretrofit.interaction.StyleInteractor;
@@ -50,5 +52,9 @@ public class BackendFactory {
 
     public static StyleInteractor getStyleInteractor() {
         return new StyleInteractorImpl(getService());
+    }
+
+    public static BeerDetailsInteractor getBeerDetailsInteractor() {
+        return new BeerDetailsInteractorImpl(getService());
     }
 }

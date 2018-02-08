@@ -6,83 +6,37 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 import com.tkusevic.beerappretrofit.R;
 import com.tkusevic.beerappretrofit.commons.Constants;
 import com.tkusevic.beerappretrofit.data.model.Beer;
-import com.tkusevic.beerappretrofit.data.response.BeerResponse;
 import com.tkusevic.beerappretrofit.networking.BackendFactory;
 import com.tkusevic.beerappretrofit.networking.BeersApiService;
+import com.tkusevic.beerappretrofit.presentation.BeerDetailsPresenter;
+import com.tkusevic.beerappretrofit.presentation.BeerDetailsPrestenterImpl;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * Created by tkusevic on 05.02.2018..
  */
 
-public class BeerDetailsActivity extends AppCompatActivity implements View.OnClickListener {
+public class BeerDetailsActivity extends AppCompatActivity implements View.OnClickListener, BeerDetailsView {
 
-    private static final String API_KEY = "5f56eec4b4406fa4c371e708dbf96f06";
     private ImageView image;
     private TextView style;
     private TextView description;
-    private String beerId ;
-    private BeersApiService service;
-    private Beer beer;
 
+    private BeerDetailsPresenter presenter;
 
-    // TODO: 07.02.2018. CREATE MVP FOR DETAILS
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beer_details);
-        service = BackendFactory.getService();
+        presenter = new BeerDetailsPrestenterImpl(BackendFactory.getBeerDetailsInteractor());
+        presenter.setBaseView(this);
         initUi();
         getBeerData();
-        showData();
-    }
-
-    private void showData() {
-        image.setImageResource(R.drawable.no_picture);
-        if (beer != null) {
-            if (beer.getLabels() != null) {
-                Picasso.with(this)
-                        .load(beer.getLabels().getLarge())
-                        .resize(Constants.PICTURE_WIDTH, Constants.PICTURE_HEIGHT)
-                        .into(image);
-            }
-            style.setText(beer.getStyle().getName());
-            description.setText(beer.getDescription());
-        }
-    }
-
-    private void getBeerData() {
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            beerId = extras.getString(Constants.BEER_ID);
-        }
-        service.getBeerById(beerId, API_KEY).enqueue(new Callback<BeerResponse>() {
-            @Override
-            public void onResponse(Call<BeerResponse> call, Response<BeerResponse> response) {
-                if (response.isSuccessful()) {
-                    if(response.code() == Constants.RESPONSE_OK) {
-                        beer = response.body().getBeer();
-                        showData();
-                    }
-                } else {
-                    Toast.makeText(BeerDetailsActivity.this, R.string.no_data_found, Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<BeerResponse> call, Throwable t) {
-                Toast.makeText(BeerDetailsActivity.this, R.string.something_went_wrong, Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     private void initUi() {
@@ -93,12 +47,35 @@ public class BeerDetailsActivity extends AppCompatActivity implements View.OnCli
         back.setOnClickListener(this);
     }
 
+    private void getBeerData() {
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            presenter.setBeerId(extras.getString(Constants.BEER_ID));
+        }
+        presenter.getBeerById();
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case (R.id.backDetails):
                 finish();
                 break;
+        }
+    }
+
+    @Override
+    public void setBeer(Beer beer) {
+        image.setImageResource(R.drawable.no_picture);
+        if (beer != null) {
+            if (beer.getLabels() != null) {
+                Picasso.with(this)
+                        .load(beer.getLabels().getLarge())
+                        .resize(Constants.PICTURE_WIDTH, Constants.PICTURE_HEIGHT)
+                        .into(image);
+            }
+            style.setText(beer.getStyle().getName());
+            description.setText(beer.getDescription());
         }
     }
 }
