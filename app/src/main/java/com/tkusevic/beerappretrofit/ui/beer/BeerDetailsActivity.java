@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 import com.tkusevic.beerappretrofit.R;
 import com.tkusevic.beerappretrofit.commons.Constants;
+import com.tkusevic.beerappretrofit.commons.Utils.CircleTransform;
 import com.tkusevic.beerappretrofit.data.model.Beer;
 import com.tkusevic.beerappretrofit.networking.BackendFactory;
 import com.tkusevic.beerappretrofit.networking.BeersApiService;
@@ -69,10 +70,9 @@ public class BeerDetailsActivity extends AppCompatActivity implements View.OnCli
         image.setImageResource(R.drawable.no_picture);
         if (beer != null) {
             if (beer.getLabels() != null) {
-                Picasso.with(this)
-                        .load(beer.getLabels().getLarge())
-                        .resize(Constants.PICTURE_WIDTH, Constants.PICTURE_HEIGHT)
-                        .into(image);
+                Picasso.with(this).
+                        load(beer.getLabels().getLarge()).
+                        transform(new CircleTransform()).into(image);
             }
             style.setText(beer.getStyle().getName());
             description.setText(beer.getDescription());
