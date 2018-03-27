@@ -33,6 +33,9 @@ public class StyleActivity extends AppCompatActivity implements StyleListener, S
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_style);
         initPresenter();
+
+
+
         initAdapter();
         initList();
         loadStyles();
